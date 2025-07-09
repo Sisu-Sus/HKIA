@@ -24,7 +24,7 @@ function loadProgress() {
   const raw = localStorage.getItem(PROGRESS_KEY);
   return raw ? JSON.parse(raw) : getDefaultProgress();
 }
-function saveProgress(data) {
+function saveProgress(progress) {
   localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
 }
 
