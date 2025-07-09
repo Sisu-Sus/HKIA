@@ -1,7 +1,4 @@
-
-// Basics
-
-const PROGRESS_KEY = 'hkiaProgress';'
+const PROGRESS_KEY = 'hkiaProgress';
 
 const characters = [
     "Hello Kitty",
@@ -38,7 +35,7 @@ function createCharacterCard(name, data) {
     title.textContent = `🎀 ${name}`;
 
     const levelLabel = document.createElement('label');
-    levelLabel.textContent  = 'Freindship Level: ';
+    levelLabel.textContent  = 'Friendship Level: ';
     const levelInput = document.createElement('input');
     levelInput.type = 'number';
     levelInput.value = data.friendshipLevel;
@@ -58,9 +55,9 @@ function createCharacterCard(name, data) {
     levelInput.addEventListener('change', () => {
         data.friendshipLevel = parseInt(levelInput.value);
         saveProgress(progress);
-    });
+});
 
-    giftInput.addEventListener('change', () => {
+giftInput.addEventListener('change', () => {
         data.giftsGivenToday = parseInt(giftInput.value);
         saveProgress(prorgess);
     });
