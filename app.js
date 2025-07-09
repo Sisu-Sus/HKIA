@@ -13,7 +13,8 @@ function getDefaultProgress() {
     characters.forEach(name => {
         data[name] = {
             friendshipLevel: 0,
-            giftsGivenToday: 0
+            giftsGivenToday: 0,
+            isBestFriend: false
         };
     });
     return data;
@@ -27,41 +28,64 @@ function saveProgress(data) {
   localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
 }
 
-function createCharacterCard(name, data) {
+function createCharacterCard(name, charData) {
     const card = document.createElement('div');
     card.className = 'character-card';
 
     const title = document.createElement('h2');
     title.textContent = `🎀 ${name}`;
 
+    // FriendShip level
     const levelLabel = document.createElement('label');
     levelLabel.textContent  = 'Friendship Level: ';
     const levelInput = document.createElement('input');
     levelInput.type = 'number';
-    levelInput.value = data.friendshipLevel;
+    levelInput.value = charData.friendshipLevel;
     levelInput.min = 0;
 
+    //Gifts Given
     const giftLabel = document.createElement('label');
     giftLabel.textContent = 'Gifts Today: ';
     const giftInput = document.createElement('input');
     giftInput.type = 'number';
-    giftInput.value = data.giftsGivenToday;
+    giftInput.value = charData.giftsGivenToday;
     giftInput.min = 0;
     giftInput.max = 3;
 
 
-// Save changes to localStorage
+    //Best Friend Toggle
+    const bestFriendToggle = document.createElement('button');
+    bestFriendToggle.textContent = charData.isBestFriend ? '❤️ Bestie' : '♡ Not Bestie';
+    bestFriendToggle.style.marginLeft = '1rem';
+    
+    bestFriendToggle.addEventListener('click', () => {
+        charData.isBestFriend = !charData.isBestFriend;
+        bestFriendToggle.text.Content = charData.isBestFriend ? '❤️ Bestie' : '♡ Not Bestie';
+        saveProgress();
+    });
 
-    levelInput.addEventListener('change', () => {
-        data.friendshipLevel = parseInt(levelInput.value);
+    // Input change listeners
+    levelInput.addEventListener('input', () => {
+        charData.friendshipLevel = parseInt(levelInput.value) || 0;
+        saveProgress();
+    });
+
+    giftInput.addEventListener('input', () => {
+        charData.giftsGivenToday = parseInt(giftInput.value) || 0;
         saveProgress(progress);
+    })
+    // Save changes to localStorage
+    //levelInput.addEventListener('change', () => {
+    //    data.friendshipLevel = parseInt(levelInput.value);
+    //    saveProgress(progress);
+    //});
+
+    //giftInput.addEventListener('change', () => {
+    //    data.giftsGivenToday = parseInt(giftInput.value);
+    //    saveProgress(prorgess);
     });
 
-    giftInput.addEventListener('change', () => {
-        data.giftsGivenToday = parseInt(giftInput.value);
-        saveProgress(prorgess);
-    });
-
+    // Append Everything
     card.appendChild(title);
     card.appendChild(levelLabel);
     card.appendChild(levelInput);
@@ -75,7 +99,6 @@ function createCharacterCard(name, data) {
 
 const progress = loadProgress();
 const container = document.getElementById('characters');
-
 characters.forEach(name => {
     const card = createCharacterCard(name, progress[name]);
     container.appendChild(card);
