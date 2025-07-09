@@ -25,7 +25,7 @@ function loadProgress() {
   return raw ? JSON.parse(raw) : getDefaultProgress();
 }
 function saveProgress(progress) {
-  localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
 }
 
 function createCharacterCard(name, charData) {
@@ -76,12 +76,12 @@ function createCharacterCard(name, charData) {
     })
     // Save changes to localStorage
     levelInput.addEventListener('change', () => {
-        data.friendshipLevel = parseInt(levelInput.value);
+        progress.friendshipLevel = parseInt(levelInput.value);
         saveProgress(progress);
     });
 
     giftInput.addEventListener('change', () => {
-        data.giftsGivenToday = parseInt(giftInput.value);
+        progress.giftsGivenToday = parseInt(giftInput.value);
         saveProgress(prorgess);
     });
 
