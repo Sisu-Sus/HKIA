@@ -55,9 +55,9 @@ function createCharacterCard(name, data) {
     levelInput.addEventListener('change', () => {
         data.friendshipLevel = parseInt(levelInput.value);
         saveProgress(progress);
-});
+    });
 
-giftInput.addEventListener('change', () => {
+    giftInput.addEventListener('change', () => {
         data.giftsGivenToday = parseInt(giftInput.value);
         saveProgress(prorgess);
     });
