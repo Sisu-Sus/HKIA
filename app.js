@@ -106,7 +106,7 @@ characters.forEach(name => {
 
 // Reset Button
 
-docuemnt.getElementById('reset-btn').addEventListener('click', () => {
+document.getElementById('reset-btn').addEventListener('click', () => {
     if(confirm("Are you sure you want to reset all progress?")) {
         const fresh = getDefaultProgress();
         saveProgress(fresh);
