@@ -74,7 +74,7 @@ function createCharacterCard(name, data) {
 
 
 const progress = loadProgress();
-const container = docuemnt.getElementById('characters');
+const container = document.getElementById('characters');
 
 characters.forEach(name => {
     const card = createCharacterCard(name, progress[name]);
