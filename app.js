@@ -83,7 +83,7 @@ function createCharacterCard(name, charData) {
     //giftInput.addEventListener('change', () => {
     //    data.giftsGivenToday = parseInt(giftInput.value);
     //    saveProgress(prorgess);
-    });
+    //});
 
     // Append Everything
     card.appendChild(title);
