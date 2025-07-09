@@ -75,15 +75,15 @@ function createCharacterCard(name, charData) {
         saveProgress(progress);
     })
     // Save changes to localStorage
-    //levelInput.addEventListener('change', () => {
-    //    data.friendshipLevel = parseInt(levelInput.value);
-    //    saveProgress(progress);
-    //});
+    levelInput.addEventListener('change', () => {
+        data.friendshipLevel = parseInt(levelInput.value);
+        saveProgress(progress);
+    });
 
-    //giftInput.addEventListener('change', () => {
-    //    data.giftsGivenToday = parseInt(giftInput.value);
-    //    saveProgress(prorgess);
-    //});
+    giftInput.addEventListener('change', () => {
+        data.giftsGivenToday = parseInt(giftInput.value);
+        saveProgress(prorgess);
+    });
 
     // Append Everything
     card.appendChild(title);
