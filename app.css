@@ -19,6 +19,7 @@ h1 {
 }
 
 .character-card {
+  border: 1px solid powderblue;
   background: white;
   border-radius: 10px;
   padding: 1rem;
